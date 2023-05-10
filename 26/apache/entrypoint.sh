@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+rsync -rlDogO --chown 1000:1000 --ignore-existing /usr/src/nextcloud/ /var/www/html/
+
 # version_greater A B returns whether A > B
 version_greater() {
     [ "$(printf '%s\n' "$@" | sort -t '.' -n -k1,1 -k2,2 -k3,3 -k4,4 | head -n 1)" != "$1" ]
